@@ -4,6 +4,7 @@ import (
 	"bufio"
 	"fmt"
 	"io"
+	"net/http"
 	"os"
 	"strings"
 )
@@ -43,7 +44,25 @@ func readInput() int {
 }
 
 func triggerTest() {
+	websites := readFile()
+	for i, website := range websites {
+		fmt.Println("Availability testing:", i, website)
+		testWebsite(website)
+	}
+	fmt.Println("")
+}
 
+func testWebsite(url string) {
+	resp, err := http.Get(url)
+	if err != nil {
+		fmt.Println(err)
+		os.Exit(-1)
+	}
+	if resp.StatusCode == 200 {
+		fmt.Println(url, "OK")
+	} else {
+		fmt.Println(url, "FAILED")
+	}
 }
 
 func readFile() []string {
