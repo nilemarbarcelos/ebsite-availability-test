@@ -1,8 +1,11 @@
 package main
 
 import (
+	"bufio"
 	"fmt"
+	"io"
 	"os"
+	"strings"
 )
 
 func main() {
@@ -11,7 +14,7 @@ func main() {
 
 	switch input {
 	case 1:
-		fmt.Println("Testing...")
+		triggerTest()
 	case 2:
 		fmt.Println("Showing logs...")
 		os.Exit(0)
@@ -37,4 +40,28 @@ func readInput() int {
 	var input int
 	fmt.Scan(&input)
 	return input
+}
+
+func triggerTest() {
+
+}
+
+func readFile() []string {
+	var websites []string
+	file, err := os.Open("websites.txt")
+	if err != nil {
+		fmt.Println(err)
+		os.Exit(-1)
+	}
+	reader := bufio.NewReader(file)
+	for {
+		line, err := reader.ReadString('\n')
+		line = strings.TrimSpace(line)
+		websites = append(websites, line)
+		if err == io.EOF {
+			break
+		}
+	}
+	file.Close()
+	return websites
 }
