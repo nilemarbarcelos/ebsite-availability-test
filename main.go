@@ -4,6 +4,7 @@ import (
 	"bufio"
 	"fmt"
 	"io"
+	"io/ioutil"
 	"net/http"
 	"os"
 	"strings"
@@ -18,7 +19,7 @@ func main() {
 	case 1:
 		triggerTest()
 	case 2:
-		fmt.Println("Showing logs...")
+		showLogs()
 		os.Exit(0)
 	case 0:
 		fmt.Println("Exiting...")
@@ -97,4 +98,14 @@ func readFile() []string {
 	}
 	file.Close()
 	return websites
+}
+
+func showLogs() {
+	file, err := ioutil.ReadFile("logs.txt")
+	if err != nil {
+		fmt.Println(err)
+		os.Exit(-1)
+	}
+	fmt.Println(string(file))
+	fmt.Println("")
 }
