@@ -32,6 +32,7 @@ func main() {
 }
 
 func showMenu() {
+	fmt.Println("")
 	fmt.Println("--------------------------")
 	fmt.Println("1 - Availability test")
 	fmt.Println("2 - Show logs")
@@ -50,9 +51,10 @@ func triggerTest() {
 	websites := readFile()
 	for i := 0; i < 5; i++ {
 		for i, website := range websites {
-			fmt.Println("Availability testing:", i, website)
+			fmt.Println(retrieveTime(), "Availability testing:", i, website)
 			testWebsite(website)
 		}
+		time.Sleep(5 * time.Second)
 		fmt.Println("")
 	}
 }
@@ -64,10 +66,10 @@ func testWebsite(url string) {
 		os.Exit(-1)
 	}
 	if resp.StatusCode == 200 {
-		fmt.Println(url, "OK")
+		fmt.Println(retrieveTime(), url, "OK")
 		writeFile(url, "OK")
 	} else {
-		fmt.Println(url, "FAILED")
+		fmt.Println(retrieveTime(), url, "FAILED")
 		writeFile(url, "FAILED")
 	}
 }
@@ -78,7 +80,7 @@ func writeFile(url string, status string) {
 		fmt.Println(err)
 		os.Exit(-1)
 	}
-	file.WriteString(time.Now().Format("02/01/2006 15:04:05") + " - " + url + " - " + status + "\n")
+	file.WriteString(retrieveTime() + " - " + url + " - " + status + "\n")
 }
 
 func readFile() []string {
@@ -108,5 +110,8 @@ func showLogs() {
 		os.Exit(-1)
 	}
 	fmt.Println(string(file))
-	fmt.Println("")
+}
+
+func retrieveTime() string {
+	return time.Now().Format("02/01/2006 15:04:05")
 }
