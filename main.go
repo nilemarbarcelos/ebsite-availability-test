@@ -7,6 +7,7 @@ import (
 	"net/http"
 	"os"
 	"strings"
+	"time"
 )
 
 func main() {
@@ -75,8 +76,7 @@ func writeFile(url string, status string) {
 		fmt.Println(err)
 		os.Exit(-1)
 	}
-	file.WriteString(url + " - " + status + "\n")
-
+	file.WriteString(time.Now().Format("02/01/2006 15:04:05") + " - " + url + " - " + status + "\n")
 }
 
 func readFile() []string {
