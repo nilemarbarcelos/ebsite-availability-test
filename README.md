@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/nilemarbarcelos/website-availability-test.svg?branch=master)](https://travis-ci.org/nilemarbarcelos/website-availability-test)
 [![Go Report Card](https://goreportcard.com/badge/github.com/nilemarbarcelos/website-availability-test)](https://goreportcard.com/report/github.com/nilemarbarcelos/website-availability-test)
 [![GoDoc](https://godoc.org/github.com/nilemarbarcelos/website-availability-test?status.svg)](https://godoc.org/github.com/nilemarbarcelos/website-availability-test)
 
