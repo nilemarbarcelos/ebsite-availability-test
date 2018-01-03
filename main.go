@@ -62,9 +62,21 @@ func testWebsite(url string) {
 	}
 	if resp.StatusCode == 200 {
 		fmt.Println(url, "OK")
+		writeFile(url, "OK")
 	} else {
 		fmt.Println(url, "FAILED")
+		writeFile(url, "FAILED")
 	}
+}
+
+func writeFile(url string, status string) {
+	file, err := os.OpenFile("logs.txt", os.O_CREATE|os.O_RDWR|os.O_APPEND, 0666)
+	if err != nil {
+		fmt.Println(err)
+		os.Exit(-1)
+	}
+	file.WriteString(url + " - " + status + "\n")
+
 }
 
 func readFile() []string {
