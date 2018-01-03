@@ -12,21 +12,22 @@ import (
 )
 
 func main() {
-	showMenu()
-	input := readInput()
+	for {
+		showMenu()
+		input := readInput()
 
-	switch input {
-	case 1:
-		triggerTest()
-	case 2:
-		showLogs()
-		os.Exit(0)
-	case 0:
-		fmt.Println("Exiting...")
-		os.Exit(0)
-	default:
-		fmt.Println("No such command")
-		os.Exit(-1)
+		switch input {
+		case 1:
+			triggerTest()
+		case 2:
+			showLogs()
+		case 0:
+			fmt.Println("Exiting...")
+			os.Exit(0)
+		default:
+			fmt.Println("No such command")
+			os.Exit(-1)
+		}
 	}
 }
 
