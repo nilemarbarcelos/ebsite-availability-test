@@ -109,7 +109,13 @@ func showLogs() {
 		fmt.Println(err)
 		os.Exit(-1)
 	}
-	fmt.Println(string(file))
+	content := string(file)
+
+	if len(content) == 0 {
+		fmt.Println("Log file is empty")
+	} else {
+		fmt.Println(content)
+	}
 }
 
 func retrieveTime() string {
