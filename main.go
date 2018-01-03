@@ -45,11 +45,13 @@ func readInput() int {
 
 func triggerTest() {
 	websites := readFile()
-	for i, website := range websites {
-		fmt.Println("Availability testing:", i, website)
-		testWebsite(website)
+	for i := 0; i < 5; i++ {
+		for i, website := range websites {
+			fmt.Println("Availability testing:", i, website)
+			testWebsite(website)
+		}
+		fmt.Println("")
 	}
-	fmt.Println("")
 }
 
 func testWebsite(url string) {
