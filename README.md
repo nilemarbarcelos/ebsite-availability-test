@@ -1,5 +1,7 @@
 # website-availability-test
 
+* Edit websites.txt and add the websites you want to test
+
 ```
 --------------------------
 1 - Availability test
