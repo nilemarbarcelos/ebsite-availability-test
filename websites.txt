@@ -1,2 +1,11 @@
 https://golang.org/
 https://github.com/
+https://www.ign.com
+https://www.cnn.com
+https://www.foxnews.com
+https://www.google.com
+https://www.kotaku.com
+https://www.theverge.com
+https://www.twitter.com
+https://www.facebook.com
+https://www.instagram.com
